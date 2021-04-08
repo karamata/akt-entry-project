@@ -1,9 +1,3 @@
-const doCache = false;
-
-const CACHE_NAME = 'brt_cloud_platform';
-
-console.log('========');
-
 self.addEventListener('activate', event => {
 });
 

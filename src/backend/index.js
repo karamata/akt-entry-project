@@ -53,7 +53,7 @@ const startServer = async () => {
             name="description"
             content="AKeToan"
           />
-          <meta name="author" content="BridgeTek" />
+          <meta name="author" content="AKeToan Entry Test Project" />
           <meta name="msapplication-TileColor" content="#0dffff" />
           <meta name="theme-color" content="#ffffff" />
           <title>AKeToan Entry Project</title>
