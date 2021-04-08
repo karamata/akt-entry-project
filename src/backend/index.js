@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import logger from 'morgan';
 import expressValidator from 'express-validator';
-import mongoose from 'mongoose';
 
 import pkg from '../../package.json';
 
