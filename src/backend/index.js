@@ -6,9 +6,13 @@ import logger from 'morgan';
 import expressValidator from 'express-validator';
 
 import pkg from '../../package.json';
+import routes from './routes';
+import mongoConnect from './database/connect';
 
 const startServer = async () => {
   const app = express();
+
+  mongoConnect();
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line global-require
@@ -38,6 +42,9 @@ const startServer = async () => {
   app.use(expressValidator());
   app.use(cookieParser());
   app.use(express.static('public'));
+
+  routes({ app });
+
   app.get('*', async (req, res) => {
     res.status(200).end(`
       <!DOCTYPE html>
