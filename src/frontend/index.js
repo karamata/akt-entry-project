@@ -5,10 +5,25 @@ import 'react-app-polyfill/ie11'; // For IE 11 support
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+
+import App from './App';
+import TaskReducer from './redux/task/reducer';
+
 import './index.css';
 
+const combinedReducers = combineReducers({
+  task: TaskReducer,
+});
+
+const store = createStore(combinedReducers, {}, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <h1>Hello world</h1>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app'),
 );
 
