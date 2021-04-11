@@ -2,16 +2,20 @@ import ApiClient from '../../api';
 
 const TaskService = {
   list: async () => {
-    return await ApiClient.get('/api/tasks');
+    const result = await ApiClient.get('/api/tasks');
+    return result;
   },
   create: async data => {
-    return await ApiClient.post('/api/tasks', { data });
+    const result = await ApiClient.post('/api/tasks', { data });
+    return result;
   },
   update: async (id, data) => {
-    return await ApiClient.put(`/api/tasks/${id}`, { data });
+    const result = await ApiClient.put(`/api/tasks/${id}`, { data });
+    return result;
   },
   delete: async id => {
-    return await ApiClient.delete(`/api/tasks/${id}`);
+    const result = await ApiClient.delete(`/api/tasks/${id}`);
+    return result;
   },
 };
 

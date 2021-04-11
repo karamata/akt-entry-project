@@ -9,12 +9,14 @@ import pkg from '../../package.json';
 import routes from './routes';
 import mongoConnect from './database/connect';
 
-const startServer = async () => {
+const startServer = () => {
   const app = express();
 
-  mongoConnect();
+  if (process.env.NODE_ENV !== 'test') {
+    mongoConnect();
+  }
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     // eslint-disable-next-line global-require
     const webpack = require('webpack');
 
@@ -87,9 +89,11 @@ const startServer = async () => {
     res.json(err);
   });
 
-  app.listen(process.env.PORT || 3000, () => {
-    console.info(`App is running at http://localhost:${process.env.PORT || 3000}`);
-  });
+  return app;
 };
 
-startServer();
+startServer().listen(process.env.PORT || 3000, () => {
+  console.info(`App is running at http://localhost:${process.env.PORT || 3000}`);
+});
+
+module.exports = startServer;

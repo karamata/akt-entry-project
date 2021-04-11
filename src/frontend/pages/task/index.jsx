@@ -6,7 +6,7 @@ import TaskAlert from './components/TaskAlert';
 
 import 'antd/dist/antd.css';
 
-function Task() {
+export default function Task() {
   return (
     <>
       <TaskAlert />
@@ -15,5 +15,3 @@ function Task() {
     </>
   );
 }
-
-export default Task;

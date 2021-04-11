@@ -19,23 +19,34 @@ function TaskForm(props) {
   };
 
   const onSubmit = () => {
-    if (data._id) {
+    if (data?._id) {
       taskAction.update(data);
     } else {
       taskAction.create(data);
     }
   };
 
+  const onClear = () => {
+    taskAction.setUpdate(null);
+  };
+
   return (
     <Input
       style={{ margin: '15px 0' }}
-      value={data.title}
+      value={data?.title}
       name="title"
       onChange={handleChange}
       suffix={
-        <Button type="primary" onClick={onSubmit}>
-          {data._id ? 'Update' : 'Add'}
-        </Button>
+        <>
+          <Button type="primary" onClick={onSubmit}>
+            {data?._id ? 'Update' : 'Add'}
+          </Button>
+          {data?._id && (
+            <Button type="danger" onClick={onClear}>
+              Clear
+            </Button>
+          )}
+        </>
       }
     />
   );

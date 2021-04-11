@@ -1,5 +1,5 @@
 import TaskService from './service';
-import { ACTIONS } from './constant';
+import { ACTIONS, MESSAGES } from './constant';
 
 export function list() {
   return async dispatch => {
@@ -17,12 +17,12 @@ export function create(data) {
       const task = await TaskService.create(data);
       dispatch({
         type: ACTIONS.CREATE_TASK,
-        payload: { task, message: 'Entity Created', isError: false },
+        payload: { task, message: MESSAGES.CREATED_SUCCESS, isError: false, updatedAt: new Date() },
       });
     } catch (error) {
       dispatch({
         type: ACTIONS.CREATE_TASK_FAILED,
-        payload: { message: error.message, isError: true },
+        payload: { message: error.message, isError: true, updatedAt: new Date() },
       });
     }
   };
@@ -43,12 +43,12 @@ export function update(data) {
       const task = await TaskService.update(data._id, { id: data._id, title: data.title });
       dispatch({
         type: ACTIONS.UPDATE_TASK,
-        payload: { task, message: 'Entity Updated', isError: false },
+        payload: { task, message: MESSAGES.UPDATED_SUCCESS, isError: false, updatedAt: new Date() },
       });
     } catch (error) {
       dispatch({
         type: ACTIONS.UPDATE_TASK_FAILED,
-        payload: { message: error.message, isError: true },
+        payload: { message: error.message, isError: true, updatedAt: new Date() },
       });
     }
   };
@@ -59,7 +59,7 @@ export function remove(id) {
     await TaskService.delete(id);
     dispatch({
       type: ACTIONS.DELETE_TASK,
-      payload: { id },
+      payload: { id, message: MESSAGES.DELETED_SUCCESS, isError: false, task: null, updatedAt: new Date() },
     });
   };
 }

@@ -6,6 +6,7 @@ const initialState = Map({
   task: {},
   message: null,
   isError: false,
+  updatedAt: null,
 });
 
 export default function TaskReducer(state = initialState, { type, payload }) {
@@ -18,7 +19,7 @@ export default function TaskReducer(state = initialState, { type, payload }) {
     case ACTIONS.CREATE_TASK: {
       const { task } = payload;
       const tasks = state.get('tasks');
-      const result = state.merge({ tasks: [...tasks, task], ...payload });
+      const result = state.merge({ tasks: [...tasks, task], ...payload, task: null });
       return result;
     }
 
@@ -29,15 +30,15 @@ export default function TaskReducer(state = initialState, { type, payload }) {
     case ACTIONS.UPDATE_TASK: {
       const { task } = payload;
       const tasks = state.get('tasks');
-      const newTasks = tasks.map(e => (e._id == task._id ? { ...e, ...task } : e));
-      return state.merge({ tasks: newTasks, ...payload });
+      const newTasks = tasks.map(e => (e._id === task._id ? { ...e, ...task } : e));
+      return state.merge({ tasks: newTasks, ...payload, task: null });
     }
 
     case ACTIONS.DELETE_TASK: {
       const tasks = state.get('tasks');
       const newTasks = tasks.filter(item => item._id !== payload.id);
 
-      return state.merge({ tasks: newTasks });
+      return state.merge({ tasks: newTasks, ...payload });
     }
 
     default:

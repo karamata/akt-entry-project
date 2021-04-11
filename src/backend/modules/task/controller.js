@@ -17,8 +17,8 @@ const TaskController = {
   update: (req, res, next) => {
     const id = req.params.id;
     const data = {
+      id: req.body.id,
       title: req.body.title,
-      updatedAt: new Date(),
     };
     TaskService.update(id, data)
       .then(task => res.json(task))

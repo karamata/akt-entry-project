@@ -1,19 +1,23 @@
 const APIFactory = ({ baseUrl }) => {
   const API = {
     get: async (endpoint, config) => {
-      return await call(endpoint, 'GET', config);
+      const result = await call(endpoint, 'GET', config);
+      return result;
     },
 
     post: async (endpoint, config) => {
-      return await call(endpoint, 'POST', config);
+      const result = await call(endpoint, 'POST', config);
+      return result;
     },
 
     put: async (endpoint, config) => {
-      return await call(endpoint, 'PUT', config);
+      const result = await call(endpoint, 'PUT', config);
+      return result;
     },
 
     delete: async (endpoint, config) => {
-      return await call(endpoint, 'DELETE', config);
+      const result = await call(endpoint, 'DELETE', config);
+      return result;
     },
   };
 
