@@ -19,7 +19,7 @@ export default function TaskReducer(state = initialState, { type, payload }) {
     case ACTIONS.CREATE_TASK: {
       const { task } = payload;
       const tasks = state.get('tasks');
-      const result = state.merge({ tasks: [...tasks, task], ...payload, task: null });
+      const result = state.merge({ tasks: [...tasks, task], isError: false, updatedAt: new Date(), ...payload, task: null });
       return result;
     }
 
@@ -31,17 +31,22 @@ export default function TaskReducer(state = initialState, { type, payload }) {
       const { task } = payload;
       const tasks = state.get('tasks');
       const newTasks = tasks.map(e => (e._id === task._id ? { ...e, ...task } : e));
-      return state.merge({ tasks: newTasks, ...payload, task: null });
+      return state.merge({ tasks: newTasks, isError: false, updatedAt: new Date(), ...payload, task: null });
     }
 
     case ACTIONS.DELETE_TASK: {
       const tasks = state.get('tasks');
       const newTasks = tasks.filter(item => item._id !== payload.id);
 
-      return state.merge({ tasks: newTasks, ...payload });
+      return state.merge({ tasks: newTasks, isError: false, updatedAt: new Date(), ...payload, task: null });
+    }
+
+    case ACTIONS.CREATE_TASK_FAILED:
+    case ACTIONS.UPDATE_TASK_FAILED: {
+      return state.merge({ isError: true, updatedAt: new Date(), ...payload });
     }
 
     default:
-      return state.merge({ ...payload });
+      return state;
   }
 }
