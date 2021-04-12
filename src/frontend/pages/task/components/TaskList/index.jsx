@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as TaskAction from '../../../../redux/task/action';
-import TableTaskList from '../TableTaskList';
+import TableTaskList from './TaskList.component';
 
 import 'antd/dist/antd.css';
 

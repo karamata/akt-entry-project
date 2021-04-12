@@ -16,16 +16,7 @@ function LayoutComponent(props) {
           <Menu.Item key="2">Todo List</Menu.Item>
         </Menu>
       </Header>
-      <Content
-        className="site-layout-background"
-        style={{
-          padding: 24,
-          margin: 0,
-          minHeight: 280,
-        }}
-      >
-        {props.children}
-      </Content>
+      <Content className="site-layout-background">{props.children}</Content>
     </Layout>
   );
 }

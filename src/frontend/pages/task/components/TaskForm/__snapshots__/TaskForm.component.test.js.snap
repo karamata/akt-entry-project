@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create form submit a task 1`] = `
+<span
+  className="ant-input-affix-wrapper"
+  style={
+    Object {
+      "margin": "15px 0",
+    }
+  }
+>
+  <input
+    className="ant-input"
+    name="title"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    style={null}
+    type="text"
+    value=""
+  />
+  <span
+    className="ant-input-suffix"
+  >
+    <button
+      className="ant-btn ant-btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Add
+      </span>
+    </button>
+  </span>
+</span>
+`;

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert failed when showed 1`] = `
+<div
+  className="ant-alert ant-alert-error ant-alert-no-icon"
+  data-show={true}
+>
+  <span
+    className="ant-alert-message"
+  >
+    <span>
+      <b>
+        Error!
+      </b>
+       
+      Title required
+    </span>
+  </span>
+  <span
+    className="ant-alert-description"
+  />
+</div>
+`;
+
+exports[`Alert success when showed 1`] = `
+<div
+  className="ant-alert ant-alert-success ant-alert-no-icon"
+  data-show={true}
+>
+  <span
+    className="ant-alert-message"
+  >
+    <span>
+      <b>
+        Success!
+      </b>
+       
+      Entity created
+    </span>
+  </span>
+  <span
+    className="ant-alert-description"
+  />
+</div>
+`;

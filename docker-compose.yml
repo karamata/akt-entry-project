@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  todoapp:
+    image: quochuydev/todoapp
+    container_name: todoapp
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URL=mongodb://db:27017/todoapp
+    volumes:
+      - .:/app
+    restart: always
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    ports:
+      - 27017:27017

@@ -8,8 +8,11 @@
 
 .site-layout-background {
   background: #fff;
+  padding: 24px;
+  min-height: 280px;
+  margin: 0;
 }
 
-.ant-layout-header { 
+.ant-layout-header {
   height: 46px;
 }

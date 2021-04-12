@@ -45,6 +45,10 @@ const startServer = () => {
   app.use(cookieParser());
   app.use(express.static('public'));
 
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+  }
+
   routes({ app });
 
   app.get('*', async (req, res) => {

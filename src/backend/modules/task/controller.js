@@ -6,7 +6,7 @@ const TaskController = {
       .then(tasks => res.json({ tasks }))
       .catch(err => next(err));
   },
-  create: async (req, res, next) => {
+  create: (req, res, next) => {
     const data = {
       title: req.body.title,
     };

@@ -33,7 +33,7 @@ describe('Task', () => {
     }
   });
 
-  it('Create a task success', async () => {
+  it('POST /api/tasks - Create a task success', async () => {
     const response = await request(app)
       .post('/api/tasks')
       .send({
@@ -44,7 +44,7 @@ describe('Task', () => {
     expect(response.body).toMatchObject({ title: 'Do homework' });
   });
 
-  it('Create a task fail if empty title', async () => {
+  it('POST /api/tasks - Create a task fail if empty title', async () => {
     const response = await request(app)
       .post('/api/tasks')
       .send({
@@ -54,7 +54,7 @@ describe('Task', () => {
     expect(response.body).toMatchObject({ message: 'Title required' });
   });
 
-  it('Update a task success', async () => {
+  it('PUT /api/tasks/:id - Update a task success', async () => {
     const createResponse = await request(app)
       .post(`/api/tasks`)
       .send({
@@ -74,7 +74,7 @@ describe('Task', () => {
     expect(response.body).toMatchObject({ _id: task._id, title: 'Learning english' });
   });
 
-  it('Update a task fail if empty task id in body', async () => {
+  it('PUT /api/tasks/:id - Update a task fail if empty task id in body', async () => {
     const createResponse = await request(app)
       .post(`/api/tasks`)
       .send({
@@ -93,7 +93,7 @@ describe('Task', () => {
     expect(response.body).toMatchObject({ message: 'Bad request' });
   });
 
-  it('Remove a task success', async () => {
+  it('DELETE /api/tasks/:id - Remove a task success', async () => {
     const createResponse = await request(app)
       .post(`/api/tasks`)
       .send({
@@ -106,13 +106,13 @@ describe('Task', () => {
     expect(response.status).toBe(200);
   });
 
-  it('Remove a task failed if task it not exist', async () => {
+  it('DELETE /api/tasks/:id - Remove a task failed if task it not exist', async () => {
     const response = await request(app).delete(`/api/tasks/6071a44590a1de538c5c837d`);
     expect(response.status).toBe(400);
     expect(response.body).toMatchObject({ message: 'Task is not exist' });
   });
 
-  it('Should be able to list all projects', async () => {
+  it('GET /api/tasks - Should be able to list all projects', async () => {
     const response = await request(app).get('/api/tasks');
 
     expect(response.status).toBe(200);
